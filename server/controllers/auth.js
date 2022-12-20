@@ -27,7 +27,7 @@ export const signup = async (req, res, next) => {
       }
   else{
   
-    const token = jwt.sign({ id: user._id }, process.env.JWT_AUTH);
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     const { password, ...others } = user._doc;
   
     res
