@@ -15,7 +15,7 @@ app.use(
 const connect=()=>{
   
     mongoose
-    .connect(process.env.MONGOURI,{ useNewUrlParser: true, useUnifiedTopology: true }
+    .connect(process.env.MOGOURI,{ useNewUrlParser: true, useUnifiedTopology: true }
     )
     .then(() => {
       console.log("Connected to DB");
