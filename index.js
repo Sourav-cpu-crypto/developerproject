@@ -6,6 +6,7 @@ import path from 'path'
 import cookieParser from "cookie-parser";
 
 const app = express();
+const PORT = 8800 || process.env.PORT;
 dotenv.config();
 app.use(
     express.urlencoded({ extended: true })
@@ -27,16 +28,15 @@ app.use(cookieParser())
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 
-app.listen(8800, () => {
+app.listen(PORT, () => {
     connect();
     console.log("Connected to Server");
   });
   if(process.env.NODE_ENV=='production'){
 
+ app.use(express.static(path.join(__dirname, "./assignment-modulus-seventeen/build")));
 
-    app.get('/',(req,res)=>{
-        app.use(express.static(path.resolve(__dirname,'assignment-modulus-seventeen',
-        'build')))
-        res.sendFile(path.resolve(__dirname,'assignment-modulus-seventeen','build','index.html'))
-    })
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./assignment-modulus-seventeen/build/index.html"));
+});
 }
