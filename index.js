@@ -27,8 +27,6 @@ const connect=()=>{
 }
 app.use(cookieParser())
 app.use(express.json());
-
-app.use("/api/auth", authRoutes);
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("*", function (_, res) {
   res.sendFile(
@@ -38,6 +36,8 @@ app.get("*", function (_, res) {
     }
   );
 });
+app.use("/api/auth", authRoutes);
+
 
 connect().then(() => {
     app.listen(PORT, () => {
