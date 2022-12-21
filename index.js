@@ -14,16 +14,13 @@ app.use(
 );
  mongoose.set('strictQuery',true)
 const connect=()=>{
-  
-    mongoose
-    .connect(process.env.MOGOURI,{ useNewUrlParser: true, useUnifiedTopology: true }
-    )
-    .then(() => {
-      console.log("Connected to DB");
-    })
-    .catch((err) => {
-      throw err;
-    })
+ try {
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
 }
 app.use(cookieParser())
 app.use(express.json());
