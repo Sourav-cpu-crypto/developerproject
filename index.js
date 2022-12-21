@@ -1,13 +1,13 @@
 import express from "express";
 import mongoose from 'mongoose';
-import dotenv from "dotenv";
+
 import authRoutes from "./routes/auth.js";
 import path from 'path'
 import cookieParser from "cookie-parser";
 
 const app = express();
 const PORT = 8800 || process.env.PORT;
-dotenv.config();
+
 app.use(
     express.urlencoded({ extended: true })
 );
