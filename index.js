@@ -32,6 +32,4 @@ app.listen(PORT, () => {
     connect();
     console.log("Connected to Server");
   });
-  if(process.env.NODE_ENV=='production'){
 
-}
