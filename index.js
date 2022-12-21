@@ -6,7 +6,7 @@ import path from 'path'
 import cookieParser from "cookie-parser";
 
 const app = express();
-dotenv.config();
+
 const PORT = 8800 || process.env.PORT;
 
 app.use(
@@ -39,8 +39,8 @@ app.get("*", function (_, res) {
   );
 });
 
-app.listen(PORT, () => {
-    connect();
-    console.log("Connected to Server");
-  });
-
+connect().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
+})
