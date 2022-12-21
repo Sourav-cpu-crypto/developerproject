@@ -1,11 +1,12 @@
 import express from "express";
 import mongoose from 'mongoose';
-
+import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
 import path from 'path'
 import cookieParser from "cookie-parser";
 
 const app = express();
+dotenv.config();
 const PORT = 8800 || process.env.PORT;
 
 app.use(
